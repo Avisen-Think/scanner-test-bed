@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Signal Library — Scanner Test Bed</title>
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="lib-page">
+  <div class="lib-page-head">
+    <h2>Signal Library</h2>
+    <span class="sub">single-signature reference · shape only (no range/size/gain) · §5.4 — keep open alongside the scanner</span>
+  </div>
+  <div id="lib-mount"></div>
+  <div id="lib-error" class="boot-error" style="display:none"></div>
+  <script type="module">
+    import { buildLibrary } from "./render/library.js";
+    (async () => {
+      try {
+        const res = await fetch("./data/library.json");
+        if (!res.ok) throw new Error(`failed to load library.json: ${res.status}`);
+        const lib = await res.json();
+        buildLibrary(document.getElementById("lib-mount"), lib);
+      } catch (err) {
+        const e = document.getElementById("lib-error");
+        e.style.display = "";
+        e.innerHTML = `Couldn't load the library.<br>${err.message}<br><br>This page must be served over <b>http://</b> (Live Server), not <code>file://</code>.`;
+      }
+    })();
+  </script>
+</body>
+</html>

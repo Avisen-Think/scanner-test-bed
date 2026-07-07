@@ -1,0 +1,46 @@
+{
+  "_comment": "Tunable constants (design §11, §14). These are STARTING points to calibrate in-tool — not settled. Everything here is editable live in the tuning panel; this file is just the boot defaults.",
+
+  "dMin": 0.5,
+
+  "display": {
+    "_comment": "F (floor) and C (saturation) are FIXED constants, never frame-derived (design §2). Linear is the default mode; log is a toggle. gain is the linear G slider.",
+    "F": 0.3,
+    "C": 300,
+    "gain": 0.15,
+    "logMode": false
+  },
+
+  "emissive": {
+    "_comment": "Faster falloff p>2 → near-range confirm. Bars displayed against a fixed linear ceiling (displayMax), keeping the fixed-constant discipline rather than re-normalizing per frame.",
+    "p": 3,
+    "displayMax": 100
+  },
+
+  "sensor": {
+    "_comment": "Angle and range are INDEPENDENT here (the PoC's narrow-arc→+range bonus is dropped as a test-bed artifact, design §11).",
+    "angles": [360, 180, 90, 45],
+    "ranges": [50, 20, 10, 4, 2]
+  },
+
+  "grade": { "min": 0.25, "max": 1.2 },
+
+  "mobile": {
+    "_comment": "Design §11 settled: constant transit speed; extents are per-path ranges the placement/generation slider draws from (design §7.2, §9).",
+    "speed": 0.5,
+    "lineExtent": [1, 3],
+    "circleRadius": [0.5, 2],
+    "fig8Extent": [1, 3],
+    "generateRatio": 0.3
+  },
+
+  "creatures": {
+    "_comment": "Design §7.4: jitterRadius = (1 - coherence) * spreadKm; sim/creatures.js has the full flux/decoherence formula. sizeMin/Max reuses the static-organic size convention (§6.3).",
+    "spreadKm": 0.4,
+    "sizeMin": 40,
+    "sizeMax": 92
+  },
+
+  "bands": 20,
+  "emissiveBands": 3
+}

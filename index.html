@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scanner Test Bed — Phase 3 (hand placement)</title>
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="rail">
+    <div class="brand">
+      <h1>Scanner Test Bed</h1>
+      <div class="phase">phase 5 · instrumentation + save/load</div>
+      <button class="modebtn lib-btn" id="lib-open">Signal Library</button>
+    </div>
+    <div class="group"><h2>Selected contact</h2><div id="selected"><div class="dc-hint">Click a contact on the map to inspect it.</div></div></div>
+    <div class="group"><h2>Customization</h2><div id="customize"></div></div>
+    <div class="group"><h2>Generation</h2><div id="generate"></div></div>
+    <div class="group"><h2>Scenario</h2><div id="scenario"></div></div>
+    <div class="group"><h2>View &amp; locks</h2><div id="view"></div></div>
+    <div class="group"><h2>Sensor gate</h2><div id="sensor"></div></div>
+    <div class="group"><h2>Display &amp; tuning</h2><div id="display"></div></div>
+  </aside>
+
+  <main class="main">
+    <section class="field-wrap">
+      <div class="canvas-box"><canvas id="field"></canvas></div>
+      <div class="field-foot">
+        <span id="hud"></span>
+        <span id="offview"></span>
+      </div>
+    </section>
+
+    <section class="readout-col">
+      <div class="readout-shell">
+        <div class="readout-title">
+          <h2>Spectral readout</h2>
+          <span class="hint">hover a band to decompose</span>
+        </div>
+        <div id="readout"></div>
+        <div class="region-strip">
+          <span class="seg reg-metallic-text" style="flex:8">metallic 1–8</span>
+          <span class="seg" style="flex:3; color:var(--transition)">trans</span>
+          <span class="seg reg-rocky-text" style="flex:6">rocky 12–17</span>
+          <span class="seg reg-organic-text" style="flex:3">org</span>
+        </div>
+      </div>
+
+      <div class="card"><h3>Mission <span class="sub">ship-find / resource-find, §10</span></h3><div id="mission"></div></div>
+      <div class="card"><h3>Generated palette <span class="sub">variety cap draw, §3a-i</span></h3><div id="palette"></div></div>
+      <div class="card"><h3>Region energy <span class="sub">robust · additive</span></h3><div id="region-energy"></div></div>
+      <div class="card"><h3>Identity <span class="sub">dominant region, normalized</span></h3><div id="identity"></div></div>
+      <div class="card">
+        <h3>Decompose the sum <span class="sub">ground truth per band</span></h3>
+        <div id="decompose"><div class="dc-hint">Hover a band to decompose the sum.</div></div>
+        <div class="dc-subhead">Per-source region totals (whole scene, §5.1 exhaustive)</div>
+        <div id="source-totals"></div>
+      </div>
+      <div class="card">
+        <h3>Snapshot compare <span class="sub">freeze &amp; hold against live, §5.3</span></h3>
+        <div class="field"><button class="modebtn" id="snap-btn">Snapshot</button><button class="modebtn" id="snap-clear">Clear</button></div>
+        <div id="compare"></div>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="lib-overlay" id="library-root"></div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
